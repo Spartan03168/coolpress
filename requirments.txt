@@ -1,1 +1,4 @@
 django==3.2.7
+coverage
+libgravatar==1.0.0
+requests==2.26.8
