@@ -8,3 +8,6 @@ admin.site.register(Extra)
 #admin.site.register(cool_user)
 
 # Register your models here.
+
+def update_trigger():
+    pass
