@@ -8,17 +8,18 @@ from django.contrib.auth.models import User
 #from coolpress.coolpress import settings
 
 
-  class cool_user(models.Model):
-      user = models.OneToOneField(User, on_delete=models.CASCADE)
-      Github_profile = models.CharField(max_length=250, null= True, blank= True)
-      git_repo = models.IntegerField(null=True, blank=True)
-      grav_link = models.CharField(max_length=420, null=True, blank=True)
-
-      def __str__(self):
-          return f'{self.user.name({self.user.name} {self.user.})'
-
-      def save(self,*args,**kwargs):
-          super(cool_user, self).save(*args, **kwargs))
+# class cool_user(models.Model):
+#       user = models.OneToOneField(User, on_delete=models.CASCADE)
+#       Github_profile = models.CharField(max_length=250, null= True, blank= True)
+#       git_repo = models.IntegerField(null=True, blank=True)
+#       grav_link = models.CharField(max_length=420, null=True, blank=True)
+#
+#       def __str__(self):
+#           return f'{self.user.name({self.user.name}, {self.user.user})}'
+#
+#       def save(self,*args,**kwargs):
+#           super(cool_user, self).save(*args, **kwargs))
+#           email = self.user.email
 
 
 class Category(models.Model):
