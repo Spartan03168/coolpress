@@ -1,13 +1,12 @@
 from django.contrib import admin
 
-from .models import Category, Post, Extra
+from .models import Category, Post, CoolUser
 
 admin.site.register(Post)
 admin.site.register(Category)
-admin.site.register(Extra)
-#admin.site.register(cool_user)
+admin.site.register(CoolUser)
+
+
 
 # Register your models here.
 
-def update_trigger():
-    pass
