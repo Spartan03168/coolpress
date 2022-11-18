@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.urls import reverse
 from django.contrib.auth.models import User
+from django.db.models import Count
 
 
 
@@ -27,6 +28,13 @@ class Category(models.Model):
     slug = models.SlugField()
     parent = models.ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
 
+    # def countPosts(self):
+    #     category = self
+    #     child_catagories = Category.objects.filter(parent = category)
+    #     queue = list(child_catagories)
+    #     while(len(queue)):
+    #         next_children =
+
     class Meta:
         # enforcing that there can not be two categories under a parent with same slug
 
@@ -36,6 +44,46 @@ class Category(models.Model):
 
         unique_together = ('slug', 'parent',)
         verbose_name_plural = "categories"
+
+    @property
+    def postsCount(self):
+        # category = self
+        # post_sum = 0
+        # child_category = Category.objects.filter(parent = category)
+        # queue = list(child_category)
+        # while (len(queue)):
+        #     next_children = Category.objects.filter(parent = queue[0])
+        #     child_category = child_category.union(next_children)
+        #     queue.pop(0)
+        #     queue = queue + list(next_children)
+        #
+        # for child in child_category:
+        #     post_sum += len(Post.objects.filter(catagory = child))
+        #
+        # return post_sum
+        category = self
+        _postsCount = 0
+        # get list of children categories
+        child_categories = Category.objects.filter(parent=category)
+        queue = list(child_categories)
+        while len(queue):
+            next_children = Category.objects.filter(parent=queue[0])
+            child_categories = child_categories.union(next_children)
+            queue.pop(0)
+            queue += list(next_children)
+        # count posts in all related categories
+        categories = set(child_categories).union({self})
+        for category in categories:
+            _postsCount += len(Post.objects.filter(category=category))
+
+        return _postsCount
+
+
+    # def countPost_EXPERIMENT(self):
+    #     categories = Category.objects.all().annotate(post_count=Count("Post"))
+    #     for item in categories:
+    #         print(categories.post_count)
+
 
     def __str__(self):
         full_path = [self.name]

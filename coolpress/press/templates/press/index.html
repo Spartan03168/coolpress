@@ -1,0 +1,26 @@
+{% if categories %}
+  <h2>Categories</h2>
+  <ul>
+    {% for category in categories %}
+    <li>
+      {{category.name}} ({{category.postsCount }} posts)
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <h2>No categories available</h2>
+{% endif %}
+
+
+{% if latest_post_list %}
+  <h2>Latest posts</h2>
+  <ul>
+    {% for post in latest_post_list %}
+    <li>
+      {{post.title}} (Category: {{post.category.name}})
+    </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <h2>No posts available</h2>
+{% endif %}

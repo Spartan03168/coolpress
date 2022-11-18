@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import include, url
 
 urlpatterns = [
-    path('press/', include('press.urls')),
+    path('', include('press.urls')),
+    url(r'^press/', include('press.urls')),
     path('admin/', admin.site.urls),
 ]
 
