@@ -2,7 +2,6 @@ from django.db.models import Model
 from django.shortcuts import render
 from django.template import loader
 from .admin import admin
-import models
 from django.http import HttpResponse
 
 from .models import Category, Post, CoolUser
