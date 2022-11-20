@@ -1,6 +1,8 @@
+from django.db.models import Model
 from django.shortcuts import render
 from django.template import loader
 from .admin import admin
+import models
 from django.http import HttpResponse
 
 from .models import Category, Post, CoolUser
@@ -14,7 +16,7 @@ def authors(request):
     context = {
         "authors_list": authors_list
     }
-    return render(request, 'press/index.html', context)
+    return render(request, 'press/authors.html', context)
 
 def index(request):
     categories = Category.objects.all()
@@ -24,5 +26,8 @@ def index(request):
         'latest_post_list' : latest_post_list
     }
     return render(request, 'press/index.html', context)
+
+
+
 
 

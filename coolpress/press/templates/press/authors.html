@@ -1,0 +1,25 @@
+{% if authors_list %}
+    <h2>Authors</h2>
+    <ul>
+        {% for author in authors_list %}
+            <li>
+                First name: {{author.user.first_name}}
+                <br>
+                Last name: {{author.user.last_name}}
+                <br>
+                Username: {{author.user.username}}
+                <br>
+                github username: {{ author.github_profile }}
+                <br>
+                Number of github projects: {{ author.gh_repositories }}
+                <br>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<h2> No author available </h2>
+{% endif %}
+
+
+
