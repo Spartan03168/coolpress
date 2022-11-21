@@ -1,5 +1,6 @@
 from django.db import models
 #from my_posts.models import *
+from django.views.decorators.csrf import csrf_exempt
 from tinymce.models import HTMLField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -21,6 +22,7 @@ class CoolUser(models.Model):
 
       def save(self, *args, **kwargs):
           super(CoolUser, self).save(*args, **kwargs)
+
           email = self.user.email
           if self.gravatar_link is None and email:
               image_link = get_gravatar_image(email)
@@ -55,6 +57,29 @@ class Category(models.Model):
 
         unique_together = ('slug', 'parent',)
         verbose_name_plural = "categories"
+
+    def get_cat_list(self):
+        k = self.category
+
+        breadcrumb = ["dummy"]
+        while k is not None:
+            breadcrumb.append(k.slug)
+            k = k.parent
+        for i in range(len(breadcrumb) - 1):
+            breadcrumb[i] = "/".join(breadcrumb[-1:i - 1:-1])
+        return breadcrumb[-1:0:-1]
+
+    @property
+    def commentList(self):
+        return Comment.objects.filter(post= self, visible = True)
+    @property
+    def heirarchy(self):
+        return self.get_cat_list()[-1]
+    @property
+    def path(self):
+        return f'{self.heirarchy}/{self.slug}'
+    def __str__(self):
+        return self.title
 
     @property
     def postsCount(self):
@@ -105,8 +130,6 @@ class Category(models.Model):
         return ' -> '.join(full_path[::-1])
 
 # Create your models here.
-
-
 
 
 
