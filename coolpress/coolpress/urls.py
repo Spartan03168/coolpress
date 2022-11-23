@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls import include, url
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('', include('press.urls')),
+    path('', RedirectView.as_view(url= 'press/', permanent= True)),
     url(r'^press/', include('press.urls')),
     path('admin/', admin.site.urls),
 ]

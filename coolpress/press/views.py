@@ -57,7 +57,9 @@ def getUser_by_categorySlug(request):
         return JsonResponse({'Success': True})
     return JsonResponse({'Success': False})
 
-
+def posts(request):
+    post_list = Post.objects.all()
+    return render(request, 'press/post_list.html', {'post_list': post_list})
 
 
 

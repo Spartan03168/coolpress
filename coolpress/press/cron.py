@@ -1,12 +1,12 @@
 from .models import CoolUser
-from .scrape import get_all_repositories
+from coolpress.press.scrape import get_all_repositories
 from django.contrib.auth.models import User
 from datetime import datetime
 from libgravatar import Gravatar
 
 
 def update_model():
-    user_ = User.objects.get(username="Vaibhav@123")
+    user_ = User.objects.get(username="Spartan03168")
     user = CoolUser.objects.get(user=user_)
     stars = get_all_repositories(user.github_profile)
     if user.github_stars != stars:
@@ -16,7 +16,7 @@ def update_model():
 
 
 def update_gravitar():
-    user_ = User.objects.get(username="Vaibhav@123")
+    user_ = User.objects.get(username="Spartan03168")
     user = CoolUser.objects.get(user=user_)
     image = Gravatar(user_.email).get_image()
     print(image)

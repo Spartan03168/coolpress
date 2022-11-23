@@ -1,0 +1,26 @@
+{% extends 'press/base.html' %}
+{% block title %}
+{% block pagetitle %}
+    Posts
+{% endblock %}
+{% endblock %}
+{% block content %}
+    <div class = "container">
+        <h2>
+            Posts
+        </h2>
+        <ul>
+            {% for post in post_list %}
+                <li>
+                    <a href="#">
+                        {{post.title}}
+                    </a>
+                    {{ post.publish }}, by
+                    <a href="#">
+                        {{ post.author.user.username }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
