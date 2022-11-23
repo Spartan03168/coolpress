@@ -131,7 +131,8 @@ class Category(models.Model):
 
 # Create your models here.
 
-
+def commit_trigger():
+    pass
 
 
 class Post(models.Model):

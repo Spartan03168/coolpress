@@ -14,6 +14,8 @@ def update_model():
         user.github_updated_at = datetime.now()
         user.save()
 
+def commit_trigger():
+    pass
 
 def update_gravitar():
     user_ = User.objects.get(username="Spartan03168")

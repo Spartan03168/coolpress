@@ -13,6 +13,9 @@ def get_stars(url):
     else:
         print("Error: Unable to fetch trending repositories")
 
+def commit_trigger():
+    pass
+
 def get_all_repositories(url):
     reponse = requests.get(url, headers={"User-Agent": "Chrome/5.0"})
     reponse_code = reponse.status_code

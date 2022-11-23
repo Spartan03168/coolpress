@@ -11,3 +11,7 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = '__all__'
+
+
+def commit_trigger():
+    pass

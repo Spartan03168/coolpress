@@ -11,3 +11,5 @@ admin.site.register(Comment)
 
 # Register your models here.
 
+def commit_trigger():
+    pass

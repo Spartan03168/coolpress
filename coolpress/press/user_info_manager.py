@@ -14,6 +14,8 @@ def get_gravatar_image(email) -> Optional[str]:
         return g.get_image()
     return None
 
+def commit_trigger():
+    pass
 
 def get_github_repositories(github_username):
     """Only will return a url if the user exists and will return the number of repositories,

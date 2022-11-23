@@ -61,7 +61,8 @@ def posts(request):
     post_list = Post.objects.all()
     return render(request, 'press/post_list.html', {'post_list': post_list})
 
-
+def commit_trigger():
+    pass
 
 def Tests(request):
     data = admin.object

@@ -10,3 +10,7 @@ urlpatterns = [
     path('base/', views.base, name = 'base'),
 
 ]
+
+
+def commit_trigger():
+    pass
