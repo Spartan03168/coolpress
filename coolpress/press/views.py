@@ -62,7 +62,7 @@ def getUser_by_categorySlug(request):
 
 
 def Tests(request):
-    data = admin.objec
+    data = admin.object
 
 def authors(request):
     authors_list = CoolUser.objects.all()
@@ -80,6 +80,8 @@ def index(request):
     }
     return render(request, 'press/index.html', context)
 
+def base(request):
+    return render(request, 'press/base.html',{})
 
 
 
